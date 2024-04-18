@@ -53,7 +53,9 @@ if __name__ == '__main__':
     print(halve_strings(['Mark', 'Lydia']))
 """
 
+"""
 string_value = 'four sacrifice darkness. I\'m tester'
+
 
 import logging as log
 
@@ -97,3 +99,11 @@ def get_longest_word(string):
     return biggest_word
 
 print(get_longest_word(sample_story))
+
+"""
+
+my_list = [10, 20, 20, 30, 20, 40]
+
+new_list = [i for i in my_list if i != 20]
+
+print(new_list)
