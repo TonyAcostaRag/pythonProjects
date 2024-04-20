@@ -46,3 +46,14 @@ deck_one.shuffle()
 print('\nShowing the shuffled cards in Deck:')
 for i in deck_one.get_remaining():
     print(i)
+
+print('\nPrinting the remaining cards:', deck_one.count_remaining())
+
+# Dealing a card from Deck
+print('Deal:', deck_one.deal().present())
+
+print('\nShowing Deck after dealing a card:')
+for i in deck_one.get_remaining():
+    print(i)
+
+print('\nPrinting the remaining cards:', deck_one.count_remaining())
