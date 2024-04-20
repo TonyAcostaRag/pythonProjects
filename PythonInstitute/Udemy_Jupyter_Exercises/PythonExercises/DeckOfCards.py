@@ -18,11 +18,7 @@ class Deck:
         self.cards = [Card(suit, value) for suit in suits for value in values]
 
     def shuffle(self):
-        for i in range(len(self.cards)):
-            random_index = random.randint(0, len(self.cards)-1)
-            temp_var = self.cards[random_index]
-            self.cards[random_index] = self.cards[i]
-            self.cards[i] = temp_var
+        random.shuffle(self.cards)
 
     def deal(self):
         if len(self.cards) != 0:
