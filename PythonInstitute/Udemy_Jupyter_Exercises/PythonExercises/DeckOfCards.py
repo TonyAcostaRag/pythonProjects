@@ -37,7 +37,6 @@ class Deck:
 
 deck_one = Deck()
 
-# showing the just created cards in Deck:
 for i in deck_one.get_remaining():
     print(i)
 
@@ -49,7 +48,6 @@ for i in deck_one.get_remaining():
 
 print('\nPrinting the remaining cards:', deck_one.count_remaining())
 
-# Dealing a card from Deck
 print('Deal:', deck_one.deal().present())
 
 print('\nShowing Deck after dealing a card:')
