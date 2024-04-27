@@ -1,5 +1,4 @@
 import os
-import platform
 
 
 def count_occurrences(file, word):
@@ -33,13 +32,8 @@ def count_occurrences(file, word):
 file = os.path.realpath(__file__)
 
 file = os.path.dirname(file)
-print(file)
-print('--->', platform.platform()[:7])
 
-#if platform.platform()[:7] == 'Windows':
 file = file.replace('PythonExercises', 'file.txt')
-#else:
-#file = file.replace('PythonExercises', 'file.txt')
 
 test_words = ['is', 'animal', 'ANIMAL', 'domestic', 'a', 'wild']
 
