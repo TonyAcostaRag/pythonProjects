@@ -2,22 +2,28 @@
 def count_occurrences(file, word):
 
     word_delimiters = [' ', ',', '.', '\n']
-    stream = open(file)
-    tempword = ''
-    counter = 0
 
-    character = stream.read(1)
-    while character != '':
-
-        while character not in word_delimiters:
-            tempword += character
-            character = stream.read(1)
-
-        if tempword.lower() == word.lower():
-            counter += 1
-
+    try:
+        stream = open(file)
         tempword = ''
+        counter = 0
+
         character = stream.read(1)
+        while character != '':
+
+            while character not in word_delimiters:
+                tempword += character
+                character = stream.read(1)
+
+            if tempword.lower() == word.lower():
+                counter += 1
+
+            tempword = ''
+            character = stream.read(1)
+    except Exception as e:
+        print('An error ocurred', e)
+    finally:
+        stream.close()
 
     return counter
 
