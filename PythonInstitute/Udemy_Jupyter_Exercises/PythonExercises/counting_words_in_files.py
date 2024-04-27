@@ -1,3 +1,10 @@
+import sys
+
+pending finish reading this page
+https://www.geeksforgeeks.org/python-read-file-from-sibling-directory/
+
+sys.path.append('\\pythonProjects\\PythonInstitute\\Udemy_Jupyter_Exercises\\PythonExercises')
+print(sys.path)
 
 def count_occurrences(file, word):
 
@@ -27,9 +34,12 @@ def count_occurrences(file, word):
 
     return counter
 
-
+'''
 file = ('C:\\Users\\Tony Acosta\\Documents\\Software Development\\Python\\Github'
         '\\pythonProjects\\PythonInstitute\\Udemy_Jupyter_Exercises\\file.txt')
+'''
+file = '\\pythonProjects\\PythonInstitute\\Udemy_Jupyter_Exercises\\file.txt'
+
 
 test_words = ['is', 'animal', 'ANIMAL', 'domestic', 'a', 'wild']
 
