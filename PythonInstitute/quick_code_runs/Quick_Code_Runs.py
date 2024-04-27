@@ -68,19 +68,21 @@ Alice was thrilled. The course was taught by a well-known programmer who made th
 
 def get_longest_word(string):
     # Split the words within the string.
-    splited_string = string.split()
+    splited_string = string.replace(',', ' ').replace('.', ' ').split()
+
+    #splited_string = string.split()
     print(splited_string, end='\n\n')
 
     # Filling the dictionary with all the words.
     words_dictionary = {}
-    print('Printing the dictionary right after the creation:', words_dictionary)
+    #print('Printing the dictionary right after the creation:', words_dictionary)
 
     for i in splited_string:
 
         if i not in words_dictionary:
             words_dictionary[i] = len(i)
 
-    print('Printing the dictionary after being filled:', words_dictionary)
+    #print('Printing the dictionary after being filled:', words_dictionary)
 
     # Check for the maximum lenght of the words in the string.
     biggest_word = ''
@@ -91,8 +93,8 @@ def get_longest_word(string):
             biggest_value = words_dictionary[keys]
             biggest_word = keys
 
-    print('Biggest word:', biggest_word)
-    print('Biggest value:', biggest_value)
+    #print('Biggest word:', biggest_word)
+    #print('Biggest value:', biggest_value)
 
     return biggest_word
 
