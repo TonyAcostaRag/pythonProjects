@@ -29,6 +29,7 @@ def count_occurrences(file, word):
 
     return counter
 
+
 file = os.path.realpath(__file__)
 file = os.path.dirname(file)
 file = file.replace('PythonExercises', 'file.txt')
