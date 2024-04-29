@@ -11,14 +11,14 @@ class TodoList:
     __name_list_format = 'todo_list'
 
     def __init__(self):
-
-        if len(os.listdir()) > 2:
+        if len([i for i in os.listdir() if i.split('.')[1] == 'txt']) > 0:
             print('Available lists:\n')
             for file in sorted(os.listdir()):
                 fileSplit = file.split('.')
-                if fileSplit[0] == TodoList.__name_list_format and fileSplit[1] == 'py':
-                    continue
-                elif fileSplit[0][:-1] == TodoList.__name_list_format and fileSplit[1] == 'txt':
+                #if fileSplit[0] == TodoList.__name_list_format and fileSplit[1] == 'py':
+                #    continue
+                #elif fileSplit[0][:-1] == TodoList.__name_list_format and fileSplit[1] == 'txt':
+                if fileSplit[0][:-1] == TodoList.__name_list_format and fileSplit[1] == 'txt':
                     print('->', file)
                     TodoList.__counter += 1
 
@@ -34,17 +34,18 @@ class TodoList:
         if choice == '1':
             TodoList.__counter += 1
             self.__list_name = self.__name_list_format + str(TodoList.__counter) + '.txt'
-            open_mode = 'x'
+            open_mode = 'w'
         elif choice in os.listdir():
             self.__list_name = choice
             open_mode = 'r'
 
-
         try:
             stream = open(self.__list_name, open_mode)
-            for line in stream:
-                if line.split(' | ')[0] not in self.__task_dict:
-                    self.__task_dict[line.split(' | ')[0]] = line.split(' | ')[1] + ' | ' + line.split(' | ')[2]
+
+            if choice != '1':
+                for line in stream:
+                    if line.split(' | ')[0] not in self.__task_dict:
+                        self.__task_dict[line.split(' | ')[0]] = line.split(' | ')[1] + ' | ' + line.split(' | ')[2]
 
             stream.close()
         except Exception as e:
@@ -128,7 +129,7 @@ class TodoList:
                 try:
                     stream = open(self.__list_name, 'w')
                     for key, value in self.__task_dict.items():
-                        stream.write(key + ' | ' + value)
+                        stream.write(key + ' | ' + value + '\n')
                     stream.close()
                 except Exception as e:
                     print('An Error occurred when re-writting the file:', e)

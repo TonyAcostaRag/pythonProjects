@@ -1,6 +1,12 @@
 /PythonInstitute/Udemy_Jupyter_Exercises/.ipynb_checkpoints/
+/PythonInstitute/Udemy_Jupyter_Exercises/PythonExercises/todo_list/*.txt
 /shelf/
 /workspace.xml
 *.iml
-*.gitignore
+/.gitignore
 *.xml
+/.DS_Store
+/PythonInstitute/.DS_Store
+/PythonInstitute/Udemy_Jupyter_Exercises/.DS_Store
+/PythonInstitute/Udemy_Jupyter_Exercises/PythonExercises/.DS_Store
+/PythonInstitute/Udemy_Jupyter_Exercises/PythonExercises/todo_list/.DS_Store
