@@ -2,7 +2,8 @@ import os
 import uuid
 
 
-os.chdir('todo_list')
+if os.getcwd()[-9:] != 'todo_list':
+    os.chdir('todo_list')
 
 
 class TodoList:
@@ -10,11 +11,41 @@ class TodoList:
     __name_list_format = 'todo_list'
 
     def __init__(self):
-        TodoList.__counter += 1
-        self.__list_name = self.__name_list_format + str(TodoList.__counter) + '.txt'
-        self.task_dict = {}
+
+        if len(os.listdir()) > 2:
+            print('Available lists:\n')
+            for file in sorted(os.listdir()):
+                fileSplit = file.split('.')
+                if fileSplit[0] == TodoList.__name_list_format and fileSplit[1] == 'py':
+                    continue
+                elif fileSplit[0][:-1] == TodoList.__name_list_format and fileSplit[1] == 'txt':
+                    print('->', file)
+                    TodoList.__counter += 1
+
+            choice = input('\n[1] To create a new list.\n[-> name list] Enter the list you want to update.\nChoice: ')
+            while choice != '1' and choice not in os.listdir():
+                choice = input('Enter a valid choice: ')
+        else:
+            choice = '1'
+
+        self.__task_dict = {}
+        open_mode = ''
+
+        if choice == '1':
+            TodoList.__counter += 1
+            self.__list_name = self.__name_list_format + str(TodoList.__counter) + '.txt'
+            open_mode = 'x'
+        elif choice in os.listdir():
+            self.__list_name = choice
+            open_mode = 'r'
+
+
         try:
-            stream = open(self.__list_name, 'w')
+            stream = open(self.__list_name, open_mode)
+            for line in stream:
+                if line.split(' | ')[0] not in self.__task_dict:
+                    self.__task_dict[line.split(' | ')[0]] = line.split(' | ')[1] + ' | ' + line.split(' | ')[2]
+
             stream.close()
         except Exception as e:
             print('An Error occurred when creating the todo list file:', e)
@@ -32,31 +63,29 @@ class TodoList:
         while choice != '4':
             choice = input(message)
             if choice == '1':
-                self.browse_task()
+                self.__browse_task()
             elif choice == '2':
-                self.add_task()
+                self.__add_task()
             elif choice == '3':
-                self.remove_task()
+                self.__remove_task()
             elif choice == '4':
                 print('Quiting from program...')
-            choice
 
-    def add_task(self):
+    def __add_task(self):
         task = input('[ADD TASK]\nWhat is the task? ')
         deadline = input('What is the deadline? ')
         id = str(uuid.uuid4())
 
         try:
             stream = open(self.__list_name, 'a')
-            stream.write('\n' + str(id) + ' | ' + task + ' | ' + deadline)
-            self.task_dict[id] = task + ' | ' + deadline
+            stream.write(str(id) + ' | ' + task + ' | ' + deadline + '\n')
+            self.__task_dict[id] = task + ' | ' + deadline
             stream.close()
         except Exception as e:
             print('An Error occurred when opening the list for ',
                   self.__list_name, e)
 
-    def browse_task(self):
-        print()
+    def __browse_task(self):
         try:
             stream = open(self.__list_name, 'r')
             line = stream.readline()
@@ -72,9 +101,9 @@ class TodoList:
         except Exception as e:
             print('An Error occurred when reading the file:', e)
 
-    def remove_task(self):
+    def __remove_task(self):
         print('\n[COMPLETE TASK]')
-
+        task_to_complete = ''
         try:
             stream = open(self.__list_name, 'r')
             line = stream.readline()
@@ -87,23 +116,27 @@ class TodoList:
                     line = stream.readline()
 
                 task_to_complete = input('\nEnter id to complete: ')
-                if task_to_complete in self.task_dict.keys():
-                    print('\nCompleted task: ', self.task_dict.pop(task_to_complete))
-                else:
-                    print('\nNo valid id entered!')
 
             stream.close()
         except Exception as e:
             print('An Error occurred when reading the file:', e)
 
-        try:
-            stream = open(self.__list_name, 'w')
-            for key, value in self.task_dict.items():
-                stream.write(key + ' | ' + value)
-            stream.close()
-        except Exception as e:
-            print('An Error occurred when re-writting the file:', e)
+        if len(self.__task_dict) > 0:
+            if task_to_complete in self.__task_dict.keys():
+                print('\nCompleted task: ', self.__task_dict.pop(task_to_complete))
+
+                try:
+                    stream = open(self.__list_name, 'w')
+                    for key, value in self.__task_dict.items():
+                        stream.write(key + ' | ' + value)
+                    stream.close()
+                except Exception as e:
+                    print('An Error occurred when re-writting the file:', e)
+
+            else:
+                print('\nNo valid id entered!')
 
 
-list_one = TodoList()
-list_one.check_list()
+if __name__ == '__main__':
+    list_one = TodoList()
+    list_one.check_list()
