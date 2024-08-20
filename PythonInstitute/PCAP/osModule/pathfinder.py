@@ -61,5 +61,5 @@ program output:
     Display the absolute paths if the directory were found with the given name.
 """
 #path_configuration()
-find("./tree", "python")
+find("tree", "python")
 #tear_down_path_config()
