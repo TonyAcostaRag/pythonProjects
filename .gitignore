@@ -2,8 +2,8 @@
 /PythonInstitute/Udemy_Jupyter_Exercises/PythonExercises/todo_list/*.txt
 /shelf/
 /workspace.xml
+*checkpoint.ipynb
 *.iml
-/.gitignore
 .idea
 *.xml
 .DS_Store
