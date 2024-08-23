@@ -2,6 +2,7 @@
 /PythonInstitute/Udemy_Jupyter_Exercises/PythonExercises/todo_list/*.txt
 /shelf/
 /workspace.xml
+__pycache__
 *checkpoint.ipynb
 *.iml
 .idea
