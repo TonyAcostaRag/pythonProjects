@@ -48,7 +48,7 @@ def test_QueueError_Exception():
         for i in range(5):
             queue_one.get()
     except QueueError:
-        print("Queue is empty.")
+        print("queue is empty.")
 
     print("Printing the __dict__ property: ", queue_one.__dict__)
 
@@ -66,7 +66,7 @@ def test_isQueueEmpty_method():
         if not queue_one.isQueueEmpty():
             print(queue_one.get())
         else:
-            print("Queue empty")
+            print("queue empty")
 
     print("Printing the __dict__ property: ", queue_one.__dict__)
 

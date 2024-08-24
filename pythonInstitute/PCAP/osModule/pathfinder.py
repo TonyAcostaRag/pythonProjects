@@ -20,7 +20,7 @@ def path_configuration():
 
 
 def tear_down_path_config():
-    os.chdir("/Users/antonioacostaflores/Documents/DevEnvironments/pythonInstitute/PythonInstitute/osModule")
+    os.chdir("/Users/antonioacostaflores/Documents/DevEnvironments/pythonInstitute/pythonInstitute/osModule")
     os.system("rm -r tree")
 
 

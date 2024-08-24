@@ -1,3 +1,6 @@
+from tests import TestExecutor
+
+
 def is_palindrome(phrase):
 
     phrase_no_spaces = phrase.lower().replace(' ', '')
@@ -13,7 +16,7 @@ def is_palindrome(phrase):
     return True
 
 
-print(is_palindrome('anita lava la tina'))
-print(is_palindrome('no_palindrome'))
-print(is_palindrome('radar'))
-print(is_palindrome('madam'))
+TestExecutor.execute_function(
+    ['anita lava la tina', 'no_palindrome', 'radar', 'madam'],
+    is_palindrome)
+

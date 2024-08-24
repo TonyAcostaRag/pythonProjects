@@ -58,7 +58,7 @@ try:
     create_explicit_current_directory("./explicit_relative_directory")
     create_directory_on_parent_directory("../parent_of_current_directory")
     create_directory_on_absolute_directory("/Users/antonioacostaflores/Documents/DevEnvironments/"
-                                           "pythonInstitute/PythonInstitute/osModule/absolute_directory")
+                                           "pythonInstitute/pythonInstitute/osModule/absolute_directory")
     create_two_directories_recursively("parent_directory/recursive_creation")
 except FileExistsError as FEE:
     print("FileExistError:", os.strerror(FEE.errno))
@@ -69,7 +69,7 @@ change_directory("parent_directory") # Good
 list_directories()
 change_directory("recursive_creation")
 list_directories()
-change_directory("/Users/antonioacostaflores/Documents/DevEnvironments/pythonInstitute/PythonInstitute/osModule")
+change_directory("/Users/antonioacostaflores/Documents/DevEnvironments/pythonInstitute/pythonInstitute/osModule")
 get_currentWorkingDirectoty()
 delete_directory("absolute_directory")
 delete_directory("explicit_relative_directory")
@@ -85,7 +85,7 @@ values = [os.system("mkdir directoryCreatedWithSystemFunc"),
           os.system("rm -r newDirectoryToDelete"),
           os.system("rmdir relative_directory"),
           os.system("rmdir /Users/antonioacostaflores/Documents/DevEnvironments/"
-                    "pythonInstitute/PythonInstitute/parent_of_current_directory"),
+                    "pythonInstitute/pythonInstitute/parent_of_current_directory"),
           os.system("ls")
           ]
 
