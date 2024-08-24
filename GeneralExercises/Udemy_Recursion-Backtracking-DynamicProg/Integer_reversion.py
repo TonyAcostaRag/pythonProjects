@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def reverse_integer(int_num):
 
     # 1. Convert the integer to string.
@@ -27,6 +30,11 @@ def reverse_integer(int_num):
     return int(string_num)
 
 
-print(reverse_integer('1234'))
-print(reverse_integer('3434'))
-print(reverse_integer('123456789'))
+def execute_function(test_input):
+    for i in test_input:
+        start_time = datetime.now()
+        print(reverse_integer(i))
+        print('Elapsed time:', datetime.now() - start_time)
+
+
+execute_function(['1234', '3434', '123456789', '987654321123456789'])
