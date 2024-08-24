@@ -5,7 +5,7 @@ class _Node:
         self._next_ele = next_ele
 
 
-class QueuesLinked:
+class QueueLinked:
 
     def __init__(self):
         self.__front = None
@@ -53,9 +53,8 @@ class QueuesLinked:
 
 
 if __name__ == '__main__':
-    Queue = QueuesLinked()
-    Queue.enqueue(5)
-    Queue.enqueue(7)
-    Queue.enqueue(10)
+    Queue = QueueLinked()
+
+    [Queue.enqueue(i) for i in range(100)]
     print('Length:', Queue.get_queue_length())
     Queue.display()
