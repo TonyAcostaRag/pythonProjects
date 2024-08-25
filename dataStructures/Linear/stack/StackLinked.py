@@ -28,8 +28,6 @@ class StackLinked(LinearStructure):
         e = self._top._value
         self._top = self._top._next_ele
         self._size -= 1
-        if self.is_empty():
-            print('Stack is empty!')
         return e
 
     def get_top_element(self):
