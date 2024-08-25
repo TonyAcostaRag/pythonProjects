@@ -11,4 +11,3 @@ class LinearStructure:
 
     def take_out_element(self):
         return self.getting_element_out()
-
