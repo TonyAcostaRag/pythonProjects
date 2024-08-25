@@ -1,7 +1,8 @@
 from dataStructures.Linear.LinkedListNode import _Node
+from dataStructures.Linear.LinearStructure import LinearStructure
 
 
-class StackLinked:
+class StackLinked(LinearStructure):
 
     def __init__(self):
         self._top = None
@@ -43,6 +44,12 @@ class StackLinked:
             print(p._value, end=' <-- ')
             p = p._next_ele
         print()
+
+    def process_element(self, element):
+        self.push(element)
+
+    def getting_element_out(self):
+        return self.pop()
 
 
 if __name__ == '__main__':
