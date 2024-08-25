@@ -1,4 +1,4 @@
-from dataStructures.Linear.Node import _Node
+from dataStructures.Linear.LinkedListNode import _Node
 
 
 class QueueLinked:
