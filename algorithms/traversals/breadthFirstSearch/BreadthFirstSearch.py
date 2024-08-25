@@ -1,25 +1,13 @@
 from dataStructures.Linear.queue.QueueLinked import QueueLinked
 from dataStructures.NonLinear.Graphs.VertexList.VertexList import VertexListed
+from algorithms.traversals.Traversal import Traversal
 
 
-class BreadthFirstSearch:
+class BreadthFirstSearch(Traversal):
 
-    def traverse(self, cluster_list):
-
-        for vertex in cluster_list:
-            if not vertex.isVisited():
-                q = QueueLinked()
-                q.enqueue(vertex)
-                vertex.setVisited()
-
-                while not q.is_empty():
-
-                    actualVertex = q.dequeue()
-                    print('On Vertex:', actualVertex)
-                    for neighbor in actualVertex.get_adjacency_list():
-                        if not neighbor.isVisited():
-                            neighbor.setVisited()
-                            q.enqueue(neighbor)
+    def __init__(self):
+        self.queue = QueueLinked
+        super().__init__(self.queue)
 
 
 if __name__ == '__main__':

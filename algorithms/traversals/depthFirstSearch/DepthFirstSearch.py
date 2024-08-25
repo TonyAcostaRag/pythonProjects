@@ -1,25 +1,13 @@
 from dataStructures.Linear.stack.StackLinked import StackLinked
 from dataStructures.NonLinear.Graphs.VertexList.VertexList import VertexListed
+from algorithms.traversals.Traversal import Traversal
 
 
-class DepthFirstSearch:
+class DepthFirstSearch(Traversal):
 
-    def traverse(self, cluster_list):
-
-        for vertex in cluster_list:
-            if not vertex.isVisited():
-                s = StackLinked()
-                s.push(vertex)
-                vertex.setVisited()
-
-                while not s.is_empty():
-
-                    actualVertex = s.pop()
-                    print('On Vertex:', actualVertex)
-                    for neighbor in actualVertex.get_adjacency_list():
-                        if not neighbor.isVisited():
-                            neighbor.setVisited()
-                            s.push(neighbor)
+    def __init__(self):
+        self.stack = StackLinked
+        super().__init__(self.stack)
 
 
 if __name__ == '__main__':
