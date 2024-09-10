@@ -10,10 +10,11 @@ def linear_search(arr, key):
     return -1
 
 
-TestExecutor.execute_function(
-    [
-        [[84, 21, 47, 96, 15], 96],
-        [[84, 21, 47, 96, 15], 100]
-    ],
-    linear_search
-)
+if __name__ == '__main__':
+    TestExecutor.execute_function(
+        [
+            [[84, 21, 47, 96, 15], 96],
+            [[84, 21, 47, 96, 15], 100]
+        ],
+        linear_search
+    )
