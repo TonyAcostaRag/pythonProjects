@@ -1,7 +1,7 @@
 from tests import TestExecutor
 
 
-def factorial(n, accumulator):
+def factorial(n, accumulator=1):
 
     if n == 0:
         return accumulator
@@ -11,17 +11,17 @@ def factorial(n, accumulator):
 
 TestExecutor.execute_function(
     [
-        [0, 1],
-        [1, 1],
-        [2, 1],
-        [3, 1],
-        [4, 1],
-        [5, 1],
-        [6, 1],
-        [7, 1],
-        [8, 1],
-        [9, 1],
-        [10, 1]
+        [0],
+        [1],
+        [2],
+        [3],
+        [4],
+        [5],
+        [6],
+        [7],
+        [8],
+        [9],
+        [10]
     ],
     factorial
 )

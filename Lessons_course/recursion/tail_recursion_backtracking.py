@@ -21,7 +21,7 @@ TestExecutor.execute_function(
         [7],
         [8],
         [9],
-        [10],
+        [10]
     ],
     recursion
 )
