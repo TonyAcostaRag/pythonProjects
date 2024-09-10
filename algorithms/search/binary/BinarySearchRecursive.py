@@ -15,14 +15,15 @@ def binary_search_recursive(arr, key, left, right):
             return binary_search_recursive(arr, key, middle + 1, right)
 
 
-TestExecutor.execute_function(
-    [
-        [[4, 11, 18, 30, 54], 4, 0, 4],
-        [[4, 11, 18, 30, 54], 11, 0, 4],
-        [[4, 11, 18, 30, 54], 18, 0, 4],
-        [[4, 11, 18, 30, 54], 30, 0, 4],
-        [[4, 11, 18, 30, 54], 54, 0, 4],
-        [[4, 11, 18, 30, 54], 3, 0, 4]
-    ],
-    binary_search_recursive
-)
+if __name__ == '__main__':
+    TestExecutor.execute_function(
+        [
+            [[4, 11, 18, 30, 54], 4, 0, 4],
+            [[4, 11, 18, 30, 54], 11, 0, 4],
+            [[4, 11, 18, 30, 54], 18, 0, 4],
+            [[4, 11, 18, 30, 54], 30, 0, 4],
+            [[4, 11, 18, 30, 54], 54, 0, 4],
+            [[4, 11, 18, 30, 54], 3, 0, 4]
+        ],
+        binary_search_recursive
+    )
