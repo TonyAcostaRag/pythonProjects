@@ -45,9 +45,9 @@ if __name__ == '__main__':
     unsorted_1000_list = [random.randint(1, 1000) for _ in range(1000)]
     unsorted_10000_list = [random.randint(1, 1000) for _ in range(10000)]
     unsorted_100000_list = [random.randint(1, 1000) for _ in range(100000)]
-    unsorted_200000_list = [random.randint(1, 1000) for _ in range(200000)]
-    unsorted_500000_list = [random.randint(1, 1000) for _ in range(500000)]
-    unsorted_1000000_list = [random.randint(1, 1000) for _ in range(1000000)]
+    #unsorted_200000_list = [random.randint(1, 1000) for _ in range(200000)]
+    #unsorted_500000_list = [random.randint(1, 1000) for _ in range(500000)]
+    #unsorted_1000000_list = [random.randint(1, 1000) for _ in range(1000000)]
 
     TestExecutor.execute_function(
         [
@@ -55,10 +55,9 @@ if __name__ == '__main__':
             [unsorted_100_list, 0, 99],  # Elapsed time: 0:00:00.000154
             [unsorted_1000_list, 0, 999],  # Elapsed time: 0:00:00.002975
             [unsorted_10000_list, 0, 9999]  # Elapsed time: 0:00:00.131831
+            # [unsorted_200000_list, 0, 199999],  # Elapsed time: 0:00:43.767426
+            # [unsorted_500000_list, 0, 499999],  # Elapsed time: 0:05:08.836090
+            # [unsorted_1000000_list, 0, 999999]  # Elapsed time: 0:21:02.974867
         ],
         merge_sort
     )
-
-    # [unsorted_200000_list, 0, 199999],  # Elapsed time: 0:00:43.767426
-    # [unsorted_500000_list, 0, 499999],  # Elapsed time: 0:05:08.836090
-    # [unsorted_1000000_list, 0, 999999]  # Elapsed time: 0:21:02.974867
