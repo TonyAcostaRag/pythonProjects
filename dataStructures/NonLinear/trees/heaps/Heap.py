@@ -1,7 +1,7 @@
 class Heap:
 
-    def __init__(self):
-        self._max_size = 16
+    def __init__(self, max_size):
+        self._max_size = max_size + 1
         self._current_size = 0
         self._data = [-1] * self._max_size
 
@@ -28,7 +28,7 @@ class Heap:
         self._current_size -= 1
         i = 1
         j = i * 2
-        while j < self._current_size:
+        while j <= self._current_size:
             if self._data[j + 1] > self._data[j]:
                 j += 1
             if self._data[j] > self._data[i]:
@@ -58,7 +58,7 @@ class Heap:
 
 
 if __name__ == '__main__':
-    h = Heap()
+    h = Heap(6)
     h.insert_in_heap(25)
     h.insert_in_heap(14)
     h.insert_in_heap(2)
