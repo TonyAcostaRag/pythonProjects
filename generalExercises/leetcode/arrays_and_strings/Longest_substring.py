@@ -4,11 +4,15 @@ from tests import TestExecutor
 def lengthOfLongestSubstring(s: str) -> int:
     biggest_string = ''
     current_string = ''
+    left = 0
     for i in range(len(s)):
         if len(current_string) == 0:
             current_string += s[i]
             biggest_string = current_string
             continue
+
+        if len(biggest_string) > len(s[left:]):
+            break
 
         if s[i] not in current_string:
             current_string += s[i]
@@ -18,9 +22,9 @@ def lengthOfLongestSubstring(s: str) -> int:
             current_string += s[i]
             while s[i] in current_string[:-1] and len(current_string) > 1:
                 current_string = current_string[1:]
+                left += 1
 
     return len(biggest_string)
-
 
 
 TestExecutor.execute_function([
@@ -30,5 +34,5 @@ TestExecutor.execute_function([
         [' '],
         ['au'],
         ['dvdf']
-    ],[3, 1, 3, 1, 2, 3],
+    ], [3, 1, 3, 1, 2, 3],
     lengthOfLongestSubstring)
