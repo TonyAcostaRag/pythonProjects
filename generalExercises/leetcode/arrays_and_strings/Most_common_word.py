@@ -17,14 +17,7 @@ def mostCommonWord(paragraph, banned):
                 word_dictionary[word] += 1
 
     # Print the most common word.
-    max_word_occurence = 0
-    most_common_word = ''
-    for key, value in word_dictionary.items():
-        if value > max_word_occurence:
-            most_common_word = key
-            max_word_occurence = value
-
-    return most_common_word
+    return max(word_dictionary, key=lambda x: word_dictionary[x])
 
 
 TestExecutor.execute_function([
