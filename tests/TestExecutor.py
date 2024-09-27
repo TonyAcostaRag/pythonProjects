@@ -6,7 +6,8 @@ def execute_function(test_inputs, expected_values, function):
     failed_tc_dict = {}
     for i in range(len(test_inputs)):
         start_time = datetime.now()
-        print('Function return:', function(*test_inputs[i]))
+        print('Actual result:', function(*test_inputs[i]))
+        print('Expected result:', expected_values[i])
         print('Elapsed time:', datetime.now() - start_time)
         actual_result = function(*test_inputs[i])
         if actual_result == expected_values[i]:
