@@ -19,7 +19,9 @@ def lengthOfLongestSubstring(s: str) -> int:
             biggest_string += s[i]
         else:
             biggest_string += s[i]
-            while s[i] in biggest_string[:-1] and len(biggest_string) > 1:
+            for _ in range(len(biggest_string[:-1])):
+                if s[i] not in biggest_string[:-1]:
+                    break
                 biggest_string = biggest_string[1:]
                 left += 1
                 
