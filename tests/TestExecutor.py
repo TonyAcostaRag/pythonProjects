@@ -9,9 +9,9 @@ def execute_function(test_inputs, expected_values, function):
         print('Function return:', function(*test_inputs[i]))
         print('Elapsed time:', datetime.now() - start_time)
         if function(*test_inputs[i]) == expected_values[i]:
-            print('Test:', i+1, 'PASSED')
+            print('Test:', i+1, 'PASSED\n')
         else:
-            print('Test:', i+1, 'FAILED')
+            print('Test:', i+1, 'FAILED\n')
             failed_tc_list.append(i+1)
 
     if len(failed_tc_list) > 0:
