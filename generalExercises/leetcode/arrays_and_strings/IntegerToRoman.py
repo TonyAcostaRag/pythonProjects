@@ -19,12 +19,16 @@ if __name__ == '__main__':
     TestExecutor.execute_function([
         [3749],
         [58],
-        [1994]
+        [1994],
+        [1],
+        [3999]
     ],
     [
         "MMMDCCXLIX",
         "LVIII",
-        "MCMXCIV"
+        "MCMXCIV",
+        "I",
+        "MMMCMXCIX"
     ],
         intToRoman
     )
