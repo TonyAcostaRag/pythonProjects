@@ -4,6 +4,7 @@ from datetime import datetime
 def execute_function(test_inputs, expected_values, function):
 
     failed_tc_dict = {}
+    start_time = datetime.now()
     for i in range(len(test_inputs)):
         start_time = datetime.now()
         print(
