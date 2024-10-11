@@ -8,9 +8,9 @@ def execute_function(test_inputs, expected_values, function):
         start_time = datetime.now()
         print(
             '\n  Actual result:', function(*test_inputs[i]),
-            'Expected result:', expected_values[i],
-            'Elapsed time:', datetime.now() - start_time,
-            'Test input:', *test_inputs[i]
+            '\nExpected result:', expected_values[i],
+            '\nElapsed time:', datetime.now() - start_time,
+            '\nTest input:', *test_inputs[i]
         )
         actual_result = function(*test_inputs[i])
         if actual_result == expected_values[i]:
