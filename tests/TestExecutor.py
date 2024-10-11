@@ -7,13 +7,14 @@ def execute_function(test_inputs, expected_values, function):
     start_time = datetime.now()
     for i in range(len(test_inputs)):
         start_time = datetime.now()
+        actual_result = function(*test_inputs[i])
+        end_time = datetime.now() - start_time
         print(
-            '\n  Actual result:', function(*test_inputs[i]),
+            '\n  Actual result:', actual_result,
             '\nExpected result:', expected_values[i],
-            '\nElapsed time:', datetime.now() - start_time,
+            '\nElapsed time:', end_time,
             '\nTest input:', *test_inputs[i]
         )
-        actual_result = function(*test_inputs[i])
         if actual_result == expected_values[i]:
             print('Test:', i+1, 'PASSED')
         else:
