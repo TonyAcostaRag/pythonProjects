@@ -14,9 +14,9 @@ def execute_function(test_inputs, expected_values, function):
         )
         actual_result = function(*test_inputs[i])
         if actual_result == expected_values[i]:
-            print('Test:', i+1, 'PASSED\n')
+            print('Test:', i+1, 'PASSED')
         else:
-            print('Test:', i+1, 'FAILED\n')
+            print('Test:', i+1, 'FAILED')
             failed_tc_dict[(i+1)] = actual_result
 
     if len(failed_tc_dict) > 0:
