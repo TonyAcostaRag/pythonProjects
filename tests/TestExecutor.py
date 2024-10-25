@@ -26,4 +26,7 @@ def execute_function(test_inputs, expected_values, function):
         for key, value in failed_tc_dict.items():
             print('Test case:', key, 'Result:', value)
     else:
-        print('\n---> ALL TEST SUITE PASSED')
+        print(
+            '\n-------------------------------',
+            '\n---> ALL TEST SUITE PASSED <---',
+            '\n-------------------------------')
