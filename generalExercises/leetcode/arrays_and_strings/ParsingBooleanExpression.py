@@ -6,27 +6,24 @@ def parse_bool_expr(expression: str):
     def evaluate_single_expression(single_expression):
         if len(single_expression) == 1:
             return True if single_expression == 't' else False
-        operator = single_expression[0]
-        operand = ''
-        for i in range(2, len(single_expression) -1):
-            operand += single_expression[i]
-        if operator == '&':
-            return False if 'f' in operand else True
-        elif operator == '|':
+
+        if single_expression[0] == '&':
+            return False if 'f' in single_expression else True
+        elif single_expression[0] == '|':
             return True if 't' in single_expression else False
-        elif operator == '!':
-            return True if operand == 'f' else False
+        elif single_expression[0] == '!':
+            return True if single_expression[2:-1] == 'f' else False
 
     def is_single_operation(expression):
-        for i in range(1, len(expression)):
-            if expression[i] == '&' or expression[i] == '!' or expression[i] == '|':
+        for i in ['&', '|', '!']:
+            if i in expression[2:-1]:
                 return False
         return True
 
     def get_inner_operators(expression):
 
-        for i in range(2, len(expression) - 1):
-            if expression[i] in ['&', '|', '!']:
+        for i in ['&', '|', '!']:
+            if i in expression[2:]:
                 break
         else:
             return None, expression
