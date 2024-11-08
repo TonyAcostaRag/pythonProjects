@@ -5,7 +5,7 @@ from tests import TestExecutor
 
 def groupAnagrams(strs: list[str]) -> list[list[str]]:
 
-    groups: collections.defaultdict[int, list[str]] = collections.defaultdict(list)
+    groups = collections.defaultdict(list)
     for s in strs:
         count = [0] * 26
         for char in s:
