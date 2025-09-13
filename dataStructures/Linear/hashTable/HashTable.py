@@ -1,4 +1,4 @@
-from dataStructures.Linear.LinkedList_Prev import LinkedList
+from dataStructures.Linear.LinkedList.LinkedList import LinkedList
 
 
 class HashChain:
