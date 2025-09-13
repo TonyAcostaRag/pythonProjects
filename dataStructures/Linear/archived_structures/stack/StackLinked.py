@@ -1,5 +1,5 @@
 from dataStructures.Linear.Node import _Node
-from dataStructures.Linear.LinearStructure import LinearStructure
+from dataStructures.Linear.LinkedList.LinearStructure import LinearStructure
 
 
 class StackLinked(LinearStructure):

@@ -138,10 +138,8 @@ class LinkedList:
         while pointer:
             print(pointer._value, end=' --> ')
             pointer = pointer._next
-        if self._tail is None:
-            print(self._tail)
-        else:
-            print(self._tail._next)
+            if pointer is None:
+                print('None')
 
 
 if __name__ == '__main__':
