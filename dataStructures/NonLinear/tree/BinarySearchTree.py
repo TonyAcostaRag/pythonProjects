@@ -15,26 +15,22 @@ class BinarySearchTree:
         if node is None:
             node = self.root
         
-        if value == node.value:
-            return False
-        
         if value < node.value:
-
             if node.left is None:
                 node.left = TreeNode(value)
                 return True
             else:
                 return self.insert_node(value, node.left)
-            
         elif value > node.value:
-            
             if node.right is None:
                 node.right = TreeNode(value)
                 return True
             else:
                 return self.insert_node(value, node.right)
+        else:
+            return False
 
-    def contains_node(self, value):
+    def contains_node_iterative(self, value):
         
         pointer = self.root
         while pointer:
@@ -49,6 +45,27 @@ class BinarySearchTree:
                 pointer = pointer.right
         
         return False
+    
+    def contains_node(self, value, node=None):
+
+        if self.root is None:
+            return False
+        
+        if node is None:
+            node = self.root
+        
+        if value < node.value:
+            if node.left is None:
+                return False
+            else:
+                return self.contains_node(value, node.left)
+        elif value > node.value:
+            if node.right is None:
+                return False
+            else:
+                return self.contains_node(value, node.right)
+        else:
+            return True
 
 
 if __name__ == '__main__':
