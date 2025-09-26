@@ -1,4 +1,4 @@
-from dataStructures.Linear.Node import TreeNode
+from dataStructures.Node import TreeNode
 
 
 class BinarySearchTree:
@@ -198,6 +198,71 @@ class BinarySearchTree:
         traversal(self.root)
         return result
 
+    def findMode_hashMap(self, root: TreeNode) -> list[int]:
+        self.duplicates = {}
+
+        def in_order_traversal(node):
+            
+            if not node:
+                return
+
+            in_order_traversal(node.left)
+
+            if node.value not in self.duplicates:
+                self.duplicates[node.value] = 1
+            else:
+                self.duplicates[node.value] += 1        
+
+            in_order_traversal(node.right)
+
+        in_order_traversal(root)
+
+        max_dups = max(self.duplicates.values())
+        ans = []
+        for key, value in self.duplicates.items():
+
+            if value == max_dups:
+                ans.append(key)
+
+        return ans
+
+    def findMode_list(self, root: TreeNode) -> list[int]:
+        
+        def in_order_traversal(node, values):
+
+            if not node:
+                return
+            
+            in_order_traversal(node.left, values)
+            values.append(node.value)
+            in_order_traversal(node.right, values)
+
+        values = []
+        in_order_traversal(root, values)
+
+        current_streak = 0
+        max_streak = 0
+        item = ''
+        ans = []
+        for val in values:
+
+            if val != item:
+                current_streak = 0
+
+            item = val
+            current_streak += 1
+            if current_streak > max_streak:
+                max_streak = current_streak
+                ans = []
+
+            if current_streak == max_streak and (len(ans) == 0 or val != ans[-1]):
+                ans.append(val)
+
+        return ans
+
+    def findMode_no_list(self, root: TreeNode) -> list[int]:
+        pass
+
 
 if __name__ == '__main__':
 
@@ -275,7 +340,7 @@ if __name__ == '__main__':
     print(my_inverted_BST.root.right.right.value)
     '''
 
-    
+    '''
     # BFS Traversal
     my_BFS_traversal_tree = BinarySearchTree()
     my_BFS_traversal_tree.insert_node(47)
@@ -300,4 +365,35 @@ if __name__ == '__main__':
     print('\nDFS Pre Order tree traversal (call stack):\n', my_DFS_traversal_tree.tree_traversal_DFS_PreOrder_call_stack())
     print('\nDFS Post Order tree traversal (call stack):\n', my_DFS_traversal_tree.tree_traversal_DFS_PostOrder_call_stack())
     print('\nDFS In Order tree traversal (call stack):\n', my_DFS_traversal_tree.tree_traversal_DFS_InOrder_call_stack())
-    
+    '''
+
+    # Find mode
+    '''
+    my_DFS_traversal_tree = BinarySearchTree()
+    my_DFS_traversal_tree.insert_node(1)
+    my_DFS_traversal_tree.insert_node(2)
+    my_DFS_traversal_tree.root.right.left = TreeNode(2)
+
+    #modes = my_DFS_traversal_tree.findMode_hashMap(my_DFS_traversal_tree.root)
+    modes = my_DFS_traversal_tree.findMode_list(my_DFS_traversal_tree.root)
+    print(modes)
+    '''
+
+    '''
+    my_DFS_traversal_tree_hashMap = BinarySearchTree()
+    my_DFS_traversal_tree_hashMap.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
+    modes_list = my_DFS_traversal_tree_hashMap.findMode_hashMap(my_DFS_traversal_tree_hashMap.root)
+    print(modes_list)
+    '''
+
+    '''
+    my_DFS_traversal_tree_list = BinarySearchTree()
+    my_DFS_traversal_tree_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
+    modes_hash = my_DFS_traversal_tree_list.findMode_list(my_DFS_traversal_tree_list.root)
+    print(modes_hash)
+    '''
+
+    my_DFS_traversal_tree_no_list = BinarySearchTree()
+    my_DFS_traversal_tree_no_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
+    modes_no_list = my_DFS_traversal_tree_no_list.findMode_no_list(my_DFS_traversal_tree_no_list.root)
+    print(modes_no_list)

@@ -1,5 +1,5 @@
 from dataStructures.Linear.LinkedList.LinkedList import LinkedList
-from dataStructures.Linear.Node import _Node
+from dataStructures.Node import _Node
 import huge_imput_data as input
 import math
 import time

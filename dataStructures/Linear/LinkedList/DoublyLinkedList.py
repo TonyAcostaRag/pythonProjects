@@ -1,4 +1,4 @@
-from dataStructures.Linear.Node import DualNode
+from dataStructures.Node import DualNode
 
 
 class DoublyLinkedList:

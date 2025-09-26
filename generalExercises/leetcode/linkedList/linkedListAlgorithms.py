@@ -1,5 +1,5 @@
 from dataStructures.Linear.LinkedList.LinkedList import LinkedList
-from dataStructures.Linear.Node import _Node
+from dataStructures.Node import _Node
 
 
 def removeNthFromEnd(ll, n):

@@ -1,4 +1,4 @@
-from dataStructures.Linear.Node import _Node
+from dataStructures.Node import _Node
 from dataStructures.Linear.LinkedList.LinearStructure import LinearStructure
 
 

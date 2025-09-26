@@ -1,4 +1,4 @@
-from dataStructures.Linear.Node import Node
+from dataStructures.Node import Node
 
 
 class Stack_LinkedList:

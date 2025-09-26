@@ -1,5 +1,5 @@
 from dataStructures.Linear.LinkedList.DoublyLinkedList import DoublyLinkedList
-from dataStructures.Linear.Node import DualNode
+from dataStructures.Node import DualNode
 
 
 def partition_list(dll, x):
