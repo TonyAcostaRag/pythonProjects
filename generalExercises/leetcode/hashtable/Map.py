@@ -32,6 +32,18 @@ def group_anagrams(strings):
 
     return list(coded_strings.values())
 
+def two_sum(nums, target):
+
+    val_indexes = {}
+    for i in range(len(nums)):
+
+        if (target - nums[i]) not in val_indexes:
+            val_indexes[nums[i]] = i
+        else:
+            return [val_indexes[target - nums[i]], i]
+        
+    return []
+
 
 if __name__ == '__main__':
 
@@ -47,7 +59,7 @@ if __name__ == '__main__':
             print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
     '''
 
-    
+    '''
     # Group anagrams
     expected_results = [
         [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']],
@@ -67,4 +79,34 @@ if __name__ == '__main__':
             print('PASSED')
         else:
             print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
-    
+    '''
+
+
+    # Two sum
+    expected_results = [
+        [1, 4],
+        [1, 3],
+        [0, 3],
+        [1, 3],
+        [],
+        [2, 3],
+        [0, 1],
+        []
+    ]
+    test_inputs = [
+        [[5, 1, 7, 2, 9, 3], 10],
+        [[4, 2, 11, 7, 6, 3], 9],
+        [[10, 15, 5, 2, 8, 1, 7], 12],
+        [[1, 3, 5, 7, 9], 10],
+        [[1, 2, 3, 4, 5], 10],
+        [[1, 2, 3, 4, 5], 7],
+        [[1, 2, 3, 4, 5], 3],
+        [[], 0]
+    ]
+    for i in range(len(test_inputs)):
+        result = two_sum(*test_inputs[i])
+        if result == expected_results[i]:
+            print('PASSED')
+        else:
+            print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
+
