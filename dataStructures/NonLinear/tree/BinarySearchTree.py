@@ -261,7 +261,34 @@ class BinarySearchTree:
         return ans
 
     def findMode_no_list(self, root: TreeNode) -> list[int]:
-        pass
+        self.prev_node = None
+        self.ans = []
+        self.max_streak = 0
+        self.curr_streak = 0
+
+        def in_order_traversal(node):
+
+            if not node:
+                return
+
+            in_order_traversal(node.left)
+
+            if self.prev_node and node.value != self.prev_node.value:
+                self.curr_streak = 0
+
+            self.curr_streak += 1
+            if self.curr_streak > self.max_streak:
+                self.max_streak = self.curr_streak
+                self.ans = []
+
+            if self.curr_streak == self.max_streak and (len(self.ans) == 0 or node.value != self.ans[-1]):
+                self.ans.append(node.value)
+
+            self.prev_node = node
+            in_order_traversal(node.right)
+
+        in_order_traversal(root)
+        return self.ans
 
 
 if __name__ == '__main__':
@@ -379,21 +406,23 @@ if __name__ == '__main__':
     print(modes)
     '''
 
-    '''
+    
     my_DFS_traversal_tree_hashMap = BinarySearchTree()
     my_DFS_traversal_tree_hashMap.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_list = my_DFS_traversal_tree_hashMap.findMode_hashMap(my_DFS_traversal_tree_hashMap.root)
     print(modes_list)
-    '''
+    
 
-    '''
+    
     my_DFS_traversal_tree_list = BinarySearchTree()
     my_DFS_traversal_tree_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_hash = my_DFS_traversal_tree_list.findMode_list(my_DFS_traversal_tree_list.root)
     print(modes_hash)
-    '''
+    
+
 
     my_DFS_traversal_tree_no_list = BinarySearchTree()
     my_DFS_traversal_tree_no_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_no_list = my_DFS_traversal_tree_no_list.findMode_no_list(my_DFS_traversal_tree_no_list.root)
     print(modes_no_list)
+
