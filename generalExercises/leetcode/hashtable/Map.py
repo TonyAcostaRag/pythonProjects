@@ -44,6 +44,36 @@ def two_sum(nums, target):
         
     return []
 
+def subarray_sum_(nums, target):
+    
+    indexes = {0: -1} # maps sum -> index, initialize with 0 at -1 index
+    # (needed in case subarray starts at index 0)
+    accumulated_sum = 0
+    
+    for i in range(len(nums)):
+        
+        accumulated_sum += nums[i]
+        if (accumulated_sum - target) in indexes:
+            return [indexes[accumulated_sum - target]+1, i]
+        
+        indexes[accumulated_sum] = i
+            
+    return []
+
+def subarray_sum(nums, target):
+
+    indexes = {0: -1}
+    accumulated_sum = 0
+    for i in range(len(nums)):
+
+        accumulated_sum += nums[i]
+        if (accumulated_sum - target) in indexes:
+            return [indexes[accumulated_sum - target]+1, i]
+
+        indexes[accumulated_sum] = i
+
+    return []
+
 
 if __name__ == '__main__':
 
@@ -81,7 +111,7 @@ if __name__ == '__main__':
             print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
     '''
 
-
+    '''
     # Two sum
     expected_results = [
         [1, 4],
@@ -109,4 +139,34 @@ if __name__ == '__main__':
             print('PASSED')
         else:
             print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
+    '''
 
+    # subarray_sum
+    expected_results = [
+        [1, 3],
+        [0, 3],
+        [1, 1],
+        [],
+        [0, 1],
+        [2, 3],
+        [],
+        [0, 0],
+        [1, 1]
+    ]
+    test_inputs = [
+        [[1, 2, 3, 4, 5], 9],
+        [[-1, 2, 3, -4, 5], 0],
+        [[2, 3, 4, 5, 6], 3],
+        [[], 0],
+        [[3, 4, -7, 1, 3, 3, 1, -4], 7],
+        [[1, -1, 5, -2, 3], 3],
+        [[1, 2, 3], 7],
+        [[3, 4, 2, -1], 3],
+        [[1, 2, -2, 2], 2]
+    ]
+    for i in range(len(test_inputs)):
+        result = subarray_sum(*test_inputs[i])
+        if result == expected_results[i]:
+            print('PASSED')
+        else:
+            print('FAILED', 'Actual:', result, 'Expected:', expected_results[i])
