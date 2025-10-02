@@ -290,6 +290,64 @@ class BinarySearchTree:
         in_order_traversal(root)
         return self.ans
 
+    def constructMaximumBinaryTree_n2(self, nums: list[int])-> TreeNode:
+
+        if not nums:
+            return None
+
+        max_val = float('-inf')
+        max_val_index = float('-inf')
+        for i in range(len(nums)):
+
+            if nums[i] > max_val:
+                max_val = nums[i]
+                max_val_index = i
+
+        node = TreeNode(max_val)
+        node.left = self.constructMaximumBinaryTree(nums[:max_val_index])
+        node.right = self.constructMaximumBinaryTree(nums[max_val_index+1:])
+
+        return node
+
+    def constructMaximumBinaryTree_nlogn(self, nums: list[int]) -> TreeNode:
+
+        def build_max_tree(nums, left, right):
+            if left == right:
+                return None
+
+            max_val = float('-inf')
+            max_val_index = float('-inf')
+
+            for i in range(left, right):
+
+                if nums[i] > max_val:
+                    max_val = nums[i]
+                    max_val_index = i
+
+            node = TreeNode(max_val)
+            node.left = build_max_tree(nums, left, max_val_index)
+            node.right = build_max_tree(nums, max_val_index + 1, right)
+
+            return node
+
+        return build_max_tree(nums, 0, len(nums))
+
+    def constructMaximumBinaryTree(self, nums: list[int]) -> TreeNode:
+
+        stack = []
+        for num in nums:
+
+            node = TreeNode(num)
+            while stack and stack[-1].value < num:
+                node.left = stack.pop()
+
+            if stack:
+                stack[-1].right = node
+
+            stack.append(node)
+
+        return stack[0]
+
 
 if __name__ == '__main__':
 
@@ -394,8 +452,9 @@ if __name__ == '__main__':
     print('\nDFS In Order tree traversal (call stack):\n', my_DFS_traversal_tree.tree_traversal_DFS_InOrder_call_stack())
     '''
 
-    # Find mode
     '''
+    # Find mode
+    
     my_DFS_traversal_tree = BinarySearchTree()
     my_DFS_traversal_tree.insert_node(1)
     my_DFS_traversal_tree.insert_node(2)
@@ -404,25 +463,33 @@ if __name__ == '__main__':
     #modes = my_DFS_traversal_tree.findMode_hashMap(my_DFS_traversal_tree.root)
     modes = my_DFS_traversal_tree.findMode_list(my_DFS_traversal_tree.root)
     print(modes)
-    '''
-
     
     my_DFS_traversal_tree_hashMap = BinarySearchTree()
     my_DFS_traversal_tree_hashMap.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_list = my_DFS_traversal_tree_hashMap.findMode_hashMap(my_DFS_traversal_tree_hashMap.root)
     print(modes_list)
     
-
-    
     my_DFS_traversal_tree_list = BinarySearchTree()
     my_DFS_traversal_tree_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_hash = my_DFS_traversal_tree_list.findMode_list(my_DFS_traversal_tree_list.root)
     print(modes_hash)
-    
-
 
     my_DFS_traversal_tree_no_list = BinarySearchTree()
     my_DFS_traversal_tree_no_list.sorted_list_to_bst([1, 7, 8, 8, 13, 20, 20])
     modes_no_list = my_DFS_traversal_tree_no_list.findMode_no_list(my_DFS_traversal_tree_no_list.root)
     print(modes_no_list)
+    '''
 
+    my_max_binary_tree = BinarySearchTree()
+    my_max_binary_tree.root = my_max_binary_tree.constructMaximumBinaryTree([3,2,1,6,0,5])
+    if (
+        my_max_binary_tree.root.value == 6 and 
+        my_max_binary_tree.root.left.value == 3 and
+        my_max_binary_tree.root.left.right.value == 2 and
+        my_max_binary_tree.root.left.right.right.value == 1 and
+        my_max_binary_tree.root.right.value == 5 and
+        my_max_binary_tree.root.right.left.value == 0
+    ):
+        print('PASSED')
+    else:
+        print('FAILED')
