@@ -33,7 +33,12 @@ class MaxHeap:
             (right_child_index < len(self.heap) and self.heap[index] < self.heap[right_child_index])
         ):
 
-            if left_child_index < len(self.heap) and right_child_index < len(self.heap) and self.heap[left_child_index] >  self.heap[index] and self.heap[right_child_index] > self.heap[index]:
+            if (
+                left_child_index < len(self.heap) and 
+                right_child_index < len(self.heap) and
+                self.heap[left_child_index] > self.heap[index] and
+                self.heap[right_child_index] > self.heap[index]
+            ):
                 max_value_index = left_child_index if self.heap[left_child_index] > self.heap[right_child_index] else right_child_index
             
             elif left_child_index < len(self.heap) and self.heap[left_child_index] > self.heap[index]:
