@@ -32,6 +32,7 @@ class BrowserHistory_n:
         for i in range(len(self.pages_stack) - 1, -1, -1):
             print(i, ': ', self.pages_stack[i], sep = '')
     
+
 class BrowserHistory:
 
     def __init__(self, homepage):
@@ -61,6 +62,7 @@ class BrowserHistory:
 
         for i in range(len(self.history)-1, -1, -1):
             print(i, ': ',  self.history[i], sep='')
+
 
 if __name__ == '__main__':
 
